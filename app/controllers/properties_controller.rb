@@ -34,10 +34,10 @@ class PropertiesController < ApplicationController
     end
   end
   def destroy
-    # if @property.destroy && @property.stations.destroy_all
-    #   redirect_to properties_path, notice: %(登録情報を削除しました。)
-    # else
-    #   redirect_to properties_path, notice: %(登録情報の削除に失敗しました。)
-    # end
+    if @property.destroy && @property.stations.destroy_all
+      redirect_to properties_path, notice: %(登録情報を削除しました。)
+    else
+      redirect_to properties_path, notice: %(登録情報の削除に失敗しました。)
+    end
   end
 end
