@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  include PropertyConcern
+  # include PropertyConcern
   before_action :set_property, only:[:show, :edit, :update, :destroy]
 
   def new
@@ -26,12 +26,12 @@ class PropertiesController < ApplicationController
     # @property.stations.build
   end
   def update
-    # if @property.update(property_params)
-    #   redirect_to  properties_path, notice: %(登録情報を更新しました。)
-    # else
-    #   flash.now[:danger] = %(登録情報の更新に失敗しました。)
-    #   render :edit
-    # end
+    if @property.update(property_params)
+      redirect_to  properties_path, notice: %(登録情報を更新しました。)
+    else
+      flash.now[:danger] = %(登録情報の更新に失敗しました。)
+      render :edit
+    end
   end
   def destroy
     # if @property.destroy && @property.stations.destroy_all
