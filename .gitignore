@@ -19,3 +19,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+/vendor/bundle
+/node_modules
+/*/.DS_Store
