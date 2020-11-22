@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  # include PropertyConcern
+  include PropertyConcern
   before_action :set_property, only:[:show, :edit, :update, :destroy]
 
   def new
