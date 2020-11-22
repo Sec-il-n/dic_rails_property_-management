@@ -7,5 +7,11 @@ class Property < ApplicationRecord
   end
   validates :note, length: { maximum: 255 }, allow_blank: true
   has_many :stations
-  accepts_nested_attributes_for :stations
+  accepts_nested_attributes_for :stations, reject_if: :reject_both_blank, allow_destroy: true
+  #後で切り出す
+  def reject_both_blank(attributes)
+    exists = attributes[:id].present?
+    empty = attributes[:line].blank? and attributes[:station_name].blank? and attributes[:minute].blank?
+    attributes.merge!(_destroy:'1') if exists && empty
+  end
 end

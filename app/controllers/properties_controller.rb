@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    # 2.times.map{@property.stations.build}
+    2.times.map{@property.stations.build}
   end
   def create
     @property = Property.new(property_params)
@@ -22,8 +22,8 @@ class PropertiesController < ApplicationController
 
   end
   def edit
-    # counts = @property.stations.count
-    # @property.stations.build
+    counts = @property.stations.count
+    @property.stations.build
   end
   def update
     if @property.update(property_params)
