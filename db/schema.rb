@@ -10,6 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_11_22_194949) do
+
+  create_table "properties", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "address", null: false
+    t.integer "age", null: false
+    t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "line"
+    t.string "station_name"
+    t.integer "minute"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_stations_on_property_id"
+  end
 
 end
